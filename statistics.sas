@@ -20,6 +20,17 @@
 
 
 
+data empty_df;  
+	infile datalines missover;  
+    input metric $10. ;  
+    datalines;
+	pearson
+	kendall
+	hoeffding
+	; 
+run; 
+
+
 /*
 	Performs a correlation test between two variables: a target and a candidate.
 	If the test is not relevant, it retrieves an empty table.
@@ -119,3 +130,5 @@
 
 	
 %mend correlation_test;	
+
+%correlation_test(df, variable_a, empty_df, "01JAN2018 00:00:00"dt, "01APR2018 00:00:00"dt, variable_b);
